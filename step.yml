@@ -1,13 +1,12 @@
 title: |-
-  Azure DevOps status
+  Azure DevOps Pull Request status
 summary: |
-  Update commit status for Azure DevOps repositories
+  Update pull request status for Azure DevOps repositories
 description: |
-  Update commit status for Azure DevOps repositories.
-  This step always runs, no matter if build succeeded or failed.
-website: https://github.com/mediusoft/bitrise-step-azure-devops-status
-source_code_url: https://github.com/mediusoft/bitrise-step-azure-devops-status
-support_url: https://github.com/mediusoft/bitrise-step-azure-devops-status/issues
+  Update pull request status for Azure DevOps repositories
+website: https://github.com/ganeshbsub/bitrise-step-azure-devops-status
+source_code_url: https://github.com/ganeshbsub/bitrise-step-azure-devops-status
+support_url: https://github.com/ganeshbsub/bitrise-step-azure-devops-status/issues
 host_os_tags:
   - osx-10.10
   - ubuntu-16.04
@@ -16,7 +15,7 @@ type_tags:
   - utility
 
 is_requires_admin_user: false
-is_always_run: true
+is_always_run: false
 is_skippable: true
 run_if: not (enveq "BITRISE_GIT_COMMIT" "")
 
@@ -83,11 +82,11 @@ inputs:
       is_expand: true
       is_required: true
 
-  - devops_commit_state: "auto"
+  - devops_pr_state: "auto"
     opts:
-      title: Commit status
+      title: Pull Request status
       description: |
-        Status to set on commit.
+        Status to set on Pull request.
 
         Possible values are `auto`, `error`, `failed`, `notApplicable`, `notSet`, `pending`, `succeeded`.
         If set to `auto` then step will automatically set `succeeded` or `failed` based on build status.
@@ -104,7 +103,7 @@ inputs:
 
   - devops_description: ""
     opts:
-      title: Commit status description
+      title: Pull request status description
       description: |
         Status description.
 
@@ -123,17 +122,15 @@ inputs:
       is_expand: true
       is_required: true
 
-  - devops_context_name: build/$BITRISE_APP_TITLE
+  - devops_context_name: ""
     opts:
       title: Name identifier
       description: |
         Name identifier of the status.
-
-        Typically name of the build pipeline/configuration. Cannot be empty.
       is_expand: true
       is_required: true
 
-  - devops_context_genre: continuous-integration
+  - devops_context_genre: ""
     opts:
       title: Status genre
       description: |
