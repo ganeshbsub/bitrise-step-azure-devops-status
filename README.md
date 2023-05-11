@@ -1,6 +1,6 @@
 # Azure DevOps status
 
-Update commit status for Azure DevOps repositories
+Update Pull request status for Azure DevOps repositories
 
 
 ## How to use this Step
