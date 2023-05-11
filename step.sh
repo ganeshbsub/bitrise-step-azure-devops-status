@@ -6,17 +6,17 @@ echo "${devops_commit_state} ${devops_description}"
 state=$devops_commit_state
 description=$devops_description
 
-if [ $state == "auto" ]
+if [[ "$state" == "auto" ]]
 then
     state="failed"
 
-    if [ $BITRISE_BUILD_STATUS -eq 0 ]
+    if [[ $BITRISE_BUILD_STATUS -eq 0 ]]
     then
         state="succeeded"
     fi
 fi
 
-if [ -z "$description" ]
+if [[ -z "$description" ]]
 then
     description="${BITRISE_APP_TITLE} build #${BITRISE_BUILD_NUMBER} ${state}"
 fi
@@ -39,7 +39,7 @@ EOF
 
 HTTP_STATUS=$(echo $HTTP_RESPONSE | tr -d '\n' | sed -E 's/.*HTTPSTATUS:([0-9]{3})$/\1/')
 
-if [ ! $HTTP_STATUS -eq 201 || ! $HTTP_STATUS -eq 200 ]
+if [[ ! $HTTP_STATUS -eq 201 ]] || [[ ! $HTTP_STATUS -eq 200 ]]
 then
   echo "Error [HTTP status: $HTTP_STATUS]"
   exit 1
