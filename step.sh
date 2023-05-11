@@ -39,7 +39,7 @@ EOF
 
 HTTP_STATUS=$(echo $HTTP_RESPONSE | tr -d '\n' | sed -E 's/.*HTTPSTATUS:([0-9]{3})$/\1/')
 
-if [[ ! $HTTP_STATUS -eq 201 ]] || [[ ! $HTTP_STATUS -eq 200 ]]
+if [[ ! $HTTP_STATUS -eq 201 ]] && [[ ! $HTTP_STATUS -eq 200 ]]
 then
   echo "Error [HTTP status: $HTTP_STATUS]"
   exit 1
