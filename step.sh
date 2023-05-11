@@ -1,9 +1,9 @@
 #!/bin/bash
 set -ex
 
-echo "${devops_commit_state} ${devops_description}"
+echo "${devops_pr_state} ${devops_description}"
 
-state=$devops_commit_state
+state=$devops_pr_state
 description=$devops_description
 
 if [[ "$state" == "auto" ]]
